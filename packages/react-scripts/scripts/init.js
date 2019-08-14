@@ -93,13 +93,19 @@ module.exports = function(
 
   const useTypeScript = appPackage.dependencies['typescript'] != null;
 
-  // Setup the script rules
+  // Setup the script rules [C9 CHANGE]
   appPackage.scripts = {
     start: 'react-scripts start',
     build: 'react-scripts build',
-    test: 'react-scripts test',
+    test: 'npm run prettier:format && react-scripts test',
     eject: 'react-scripts eject',
+    ['test:ci']: 'cross-env CI=true && react-scripts test',
+    ['prettier:check']: 'prettier --list-different src/**/*.js',
+    ['prettier:format']: 'prettier --write src/**/*.js',
   };
+
+  // Add homepage [C9 CHANGE]
+  appPackage.homepage = '.';
 
   // Setup the eslint config
   appPackage.eslintConfig = {
