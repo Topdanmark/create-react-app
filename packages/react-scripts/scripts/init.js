@@ -189,15 +189,23 @@ module.exports = function (
 
   // Setup the script rules
   const templateScripts = templatePackage.scripts || {};
+
+  // Setup the script rules [C9 CHANGE]
   appPackage.scripts = Object.assign(
     {
       start: 'react-scripts start',
       build: 'react-scripts build',
-      test: 'react-scripts test',
+      test: 'npm run prettier:format && react-scripts test',
       eject: 'react-scripts eject',
+      ['test:ci']: 'cross-env CI=true && react-scripts test',
+      ['prettier:check']: 'prettier --list-different src/**/*.js',
+      ['prettier:format']: 'prettier --write src/**/*.js',
     },
     templateScripts
   );
+
+  // Add homepage [C9 CHANGE]
+  appPackage.homepage = '.';
 
   // Update scripts for Yarn users
   if (useYarn) {

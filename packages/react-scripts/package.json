@@ -1,7 +1,7 @@
 {
-  "name": "react-scripts",
+  "name": "c9-react-scripts",
   "version": "4.0.0",
-  "description": "Configuration and scripts for Create React App.",
+  "description": "Topdanmark specific configuration and scripts for Create React App.",
   "repository": {
     "type": "git",
     "url": "https://github.com/facebook/create-react-app.git",
