@@ -4,8 +4,11 @@
   "description": "Topdanmark specific configuration and scripts for Create React App.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/facebook/create-react-app.git",
+    "url": "https://github.com/Topdanmark/create-react-app.git",
     "directory": "packages/react-scripts"
+  },
+  "publishConfig": {
+    "registry": "http://artifactory.topdanmark.local/artifactory/api/npm/npm-local"
   },
   "license": "MIT",
   "engines": {
