@@ -217,7 +217,7 @@ module.exports = function (webpackEnv) {
       // TODO: remove this when upgrading to webpack 5
       futureEmitAssets: true,
       // There are also additional JS chunk files if you use code splitting.
-      // [C9 CHANGE: Changed to not include hash in name]
+      // [C9 CHANGE: Remove hash from name]
       chunkFilename: isEnvProduction
         ? 'static/js/[name].chunk.js'
         : isEnvDevelopment && 'static/js/[name].chunk.js',
@@ -387,7 +387,8 @@ module.exports = function (webpackEnv) {
               options: {
                 limit: imageInlineSizeLimit,
                 mimetype: 'image/avif',
-                name: 'static/media/[name].[hash:8].[ext]',
+                // [C9 CHANGE: Remove hash from name]
+                name: 'static/media/[name].[ext]',
               },
             },
             // "url" loader works like "file" loader except that it embeds assets
@@ -398,6 +399,7 @@ module.exports = function (webpackEnv) {
               loader: require.resolve('url-loader'),
               options: {
                 limit: imageInlineSizeLimit,
+                // [C9 CHANGE: Remove hash from name]
                 name: 'static/media/[name].[ext]',
               },
             },
@@ -590,7 +592,8 @@ module.exports = function (webpackEnv) {
               // by webpacks internal loaders.
               exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
               options: {
-                name: 'static/media/[name].[hash:8].[ext]',
+                // [C9 CHANGE: Remove hash from name]
+                name: 'static/media/[name].[ext]',
               },
             },
             // ** STOP ** Are you adding a new loader?
@@ -678,7 +681,7 @@ module.exports = function (webpackEnv) {
         new MiniCssExtractPlugin({
           // Options similar to the same options in webpackOptions.output
           // both options are optional
-          // [C9 CHANGE: Changed to only not include hash in filename]
+          // [C9 CHANGE: Remove hash from name]
           filename: 'static/css/[name].css',
           chunkFilename: 'static/css/[name].chunk.css',
         }),
